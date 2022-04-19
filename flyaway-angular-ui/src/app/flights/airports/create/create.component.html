@@ -1,0 +1,47 @@
+<div class="container"  style="margin-top: 5%;">            
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Add New Airport</div>
+            </div>  
+            <div class="panel-body" >
+                    <form  class="form-horizontal" [formGroup]="airportForm" (ngSubmit)="addAirport()">                     
+                       
+                        <div id="name" class="form-group required">
+                            <label for="name" class="control-label col-md-4  requiredField" >Airport Name<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-8 ">
+                                <input class="input-md  textinput textInput form-control" formControlName="name" id="id_name" maxlength="30" name="name" placeholder="Airport name" style="margin-bottom: 10px" type="text" />
+                            </div>
+                        </div>
+                        <div id="div_id_iatacode" class="form-group required">
+                            <label for="id_iatacode" class="control-label col-md-4  requiredField">IATA code<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-8 ">
+                                <input class="input-md iatacodeinput form-control" id="id_iataCode" formControlName="iataCode" name="iataCode" placeholder="Airport iatacode" style="margin-bottom: 10px" type="text" />
+                            </div>     
+                        </div>
+                        <div id="iso" class="form-group required">
+                            <label for="iso" class="control-label col-md-4  requiredField">Country Iso Code<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-8 "> 
+                                <input class="input-md textinput textInput form-control" formControlName="countryIsoCode" id="iso" name="countryIsoCode" placeholder="Country Iso Code" style="margin-bottom: 10px" type="text" />
+                            </div>
+                        </div>
+                        <div id="div_id_address" class="form-group required">
+                             <label for="id_address" class="control-label col-md-4  requiredField">Airport Address<span class="asteriskField">*</span> </label>
+                             <div class="controls col-md-8 ">
+                                <input class="input-md textinput textInput form-control" formControlName="address" id="id_address" name="address" placeholder="Airport address" style="margin-bottom: 10px" type="text" />
+                            </div>
+                        </div>
+                       
+                        
+                        <div class="form-group"> 
+                            <div class="aab controls col-md-4 "></div>
+                            <div class="controls col-md-8 ">
+                                <input type="button" routerLink="/flights/airports/" value="Back" class="btn btn-default btn btn-info" id="button-id-signup" style="margin-right: 20px;" />
+                                <input type="submit" name="Signup" value="Submit" class="btn btn btn-primary" id="button-id-signup" />
+                            </div>
+                        </div> 
+                </form>
+            </div>
+        </div>
+    </div> 
+</div>

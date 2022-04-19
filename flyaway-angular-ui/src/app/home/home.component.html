@@ -1,0 +1,121 @@
+<div id="booking" class="section">
+    <div class="section-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="booking-cta">
+              <h1>Book your flight today</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
+            </div>
+          </div>
+          <div class="col-md-7 col-md-offset-1">
+            <div class="booking-form">
+              <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <div class="form-checkbox">
+                    <label for="roundtrip">
+                      <input [ngClass]="{'active':!search.oneway}" type="radio" id="roundtrip" value="true" (click)="updateBookingType(false)" name="flight-type">
+                      <span></span>Roundtrip
+                    </label>
+                    <label for="one-way">
+                      <input [ngClass]="{'active':search.oneway}" type="radio" id="one-way" (click)="updateBookingType(true)" name="flight-type">
+                      <span></span>One way
+                    </label>
+                    
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <span class="form-label">Flying from</span>
+                      <input class="form-control" list="oCities"  (focus)="searchForm.get('originCity')?.setValue('')" formControlName="originCity" type="text" placeholder="City or airport">
+                      <div *ngIf="submitted && f.originCity.errors" class="invalid-feedback">
+                        <div *ngIf="f.originCity.errors.required">Required</div>
+                      </div>
+                      <datalist id="oCities" *ngIf="filteredOriginCities.length>0">
+                        <option (change)="valueSelected(city, true)"  *ngFor="let city of filteredOriginCities">
+                          {{city.charAt(0).toUpperCase() + city.slice(1).toLowerCase()}}
+                        </option>
+                      </datalist>
+                      
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <span class="form-label">Flyning to</span>
+                      <input class="form-control" list="dCities" (focus)="searchForm.get('destinationCity')?.setValue('')" 
+                      formControlName="destinationCity" type="text" name="destinationCity" placeholder="City or airport">
+                      
+                      <div *ngIf="submitted && f.destinationCity.errors" class="invalid-feedback">
+                        <div *ngIf="f.destinationCity.errors.required">Required</div>
+                      </div>                      
+                      <datalist id="dCities" *ngIf="filteredDestinationCities.length>0">
+                        <option (click)="valueSelected(city, false)"  *ngFor="let city of filteredDestinationCities">
+                          {{city.charAt(0).toUpperCase() + city.slice(1).toLowerCase()}}
+                        </option>
+                      </datalist>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <span class="form-label">Departing</span>
+                      <input type="date" class="form-control" required data-placeholder="Departure Date" id="departdate" 
+        pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="departureDate" required
+        aria-required="true" formControlName="departureDate" [ngClass]="{ 'is-invalid': submitted && f.departureDate.errors }" />
+                    </div>
+                  </div>
+                  <div class="col-md-6" *ngIf="!search.oneway">
+                    <div class="form-group">
+                      <span class="form-label">Returning</span>
+                      <input type="date" class="form-control" required data-placeholder="Return Date" id="returndate"
+          pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="returnDate"  aria-required="true"
+          formControlName="returnDate" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <span class="form-label">Adults (18+)</span>
+                      <input type="number" class="form-control" required min=1 formControlName="passengers" placeholder="Passengers" id="passengers"
+                        name="passengers" />
+                      <div *ngIf="submitted && f.passengers.errors" class="invalid-feedback">
+                        <div *ngIf="f.passengers.errors.required">Required</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <span class="form-label">Children (0-17)</span>
+                      <select class="form-control">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                      </select>
+                      <span class="select-arrow"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <span class="form-label">Travel class</span>
+                      <select class="form-control">
+                        <option>Economy class</option>
+                        <option>Business class</option>
+                        <option>First class</option>
+                      </select>
+                      <span class="select-arrow"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-btn">
+                  <button type="submit" class="submit-btn">Show flights</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

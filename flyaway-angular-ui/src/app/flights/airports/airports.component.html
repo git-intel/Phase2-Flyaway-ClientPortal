@@ -1,0 +1,62 @@
+<div class="container" style="margin-top: 5%;">
+    <div class="row">
+        <div class="col-md-12">
+            <h2> Airports Datatable</h2>
+            <button class="btn btn-success pull-right" (click)="addAirport()">Add New Airport</button>
+            <br>
+            <hr>
+            <div class="table-responsive">
+                <table id="mytable" class="table table-bordred table-striped">
+                    <thead>
+                        <th><input type="checkbox" id="checkall" /></th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>IATA Code</th>
+                        <th>Country Iso Code</th>
+                        <th>Address</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let airport of airports">
+                            <td><input type="checkbox" class="checkthis" /></td>
+                            <td>{{airport.id}}</td>
+                            <td>{{airport.name}}</td>
+                            <td>{{airport.iataCode}}</td>
+                            <td>{{airport.countryIsoCode}}</td>
+                            <td>{{airport.address}}</td>
+                            
+                            <td>
+                                <p data-placement="top" data-toggle="tooltip" title="Edit"><button
+                                        class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"
+                                        data-target="#edit">Edit</button>
+                                </p>
+                            </td>
+                            <td>
+                                <p data-placement="top" data-toggle="tooltip" title="Delete"><button
+                                        class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal"
+                                        data-target="#delete">Delete</button>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <div class="clearfix"></div>
+                <ul class="pagination pull-right">
+                    <li class="disabled"><a href="#">Previous</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+</div>
